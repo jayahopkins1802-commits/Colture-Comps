@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 
 export default function ShopPage() {
-  // Real vault inventory (currently empty, ready for your database or manual additions)
   const products: { id: string; name: string; price: number; rarity: string; image: string }[] = [];
 
   return (
@@ -32,11 +30,7 @@ export default function ShopPage() {
           <p className="text-slate-400 text-lg">No active cards listed in the vault shop right now.</p>
           <p className="text-slate-500 text-sm mt-2">Check back soon or submit your cards via consignments.</p>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Product cards mapped here */}
-        </div>
-      )}
+      ) : null}
     </div>
   );
 }
