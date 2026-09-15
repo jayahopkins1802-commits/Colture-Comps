@@ -1,0 +1,88 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Tier {
+  COLLECTOR
+  CONSIGNOR
+  TRADER
+}
+
+enum ItemType {
+  CARD
+  SEALED
+}
+
+enum ConsignmentStatus {
+  PENDING_REVIEW
+  ACTIVE
+  SOLD
+  RETURNED
+}
+
+model User {
+  id            String       @id @default(uuid())
+  clerkId       String       @unique
+  email         String       @unique
+  tier          Tier         @default(COLLECTOR)
+  hasActiveSub  Boolean      @default(false)
+  uploadsLeft   Int          @default(0)
+  stripeSubId   String?
+  shippingName  String?
+  shippingAddr  String?
+  consignments  Consignment[]
+  wishlists     Wishlist[]
+  createdAt     DateTime     @default(now())
+}
+
+model ShopItem {
+  id          String     @id @default(uuid())
+  name        String
+  set         String
+  type        ItemType
+  price       Float
+  imageUrl    String
+  views       Int        @default(0)
+  wishlists   Wishlist[]
+  createdAt   DateTime   @default(now())
+}
+
+model Consignment {
+  id          String            @id @default(uuid())
+  userId      String
+  user        User              @relation(fields: [userId], references: [id])
+  itemName    String
+  set         String
+  type        ItemType
+  price       Float
+  imageUrl    String
+  views       Int               @default(0)
+  status      ConsignmentStatus @default(ACTIVE)
+  wishlists   Wishlist[]
+  createdAt   DateTime          @default(now())
+}
+
+model Wishlist {
+  id            String       @id @default(uuid())
+  userId        String
+  user          User         @relation(fields: [userId], references: [id])
+  shopItemId    String?
+  shopItem      ShopItem?    @relation(fields: [shopItemId], references: [id])
+  consignmentId String?
+  consignment   Consignment? @relation(fields: [consignmentId], references: [id])
+  createdAt     DateTime     @default(now())
+}
+
+model Order {
+  id           String   @id @default(uuid())
+  buyerEmail   String
+  items        String
+  totalPaid    Float
+  shippingInfo String
+  createdAt    DateTime @default(now())
+}
