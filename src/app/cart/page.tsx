@@ -1,11 +1,12 @@
 export default function CartPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 p-8 max-w-4xl mx-auto space-y-6">
-      <h1 className="text-3xl font-black text-white tracking-tight">Your Cart</h1>
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-4">
-        <p className="text-slate-400">Your cart is currently empty.</p>
-        <a href="/shop" className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-500 transition">Browse Shop</a>
+    <div className="min-h-screen bg-slate-950 text-slate-50 py-12 px-6 sm:px-12 max-w-4xl mx-auto">
+      <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+        Your Vault Cart
+      </h1>
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-3xl p-8 shadow-xl text-center py-16">
+        <p className="text-slate-400 text-lg">Your cart is currently empty.</p>
       </div>
-    </main>
+    </div>
   );
 }
