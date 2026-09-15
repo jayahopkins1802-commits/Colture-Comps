@@ -11,9 +11,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="bg-slate-950 text-slate-100 min-h-screen">
+        <body className="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
           <Navbar />
-          <main className="max-w-7xl mx-auto p-6">{children}</main>
+          {children}
         </body>
       </html>
     </ClerkProvider>
