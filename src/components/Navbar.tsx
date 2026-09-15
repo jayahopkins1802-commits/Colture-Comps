@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Show, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
@@ -20,15 +20,15 @@ export default function Navbar() {
           Admin
         </Link>
         
-        <SignedOut>
+        <Show when="signed-out">
           <Link href="/sign-in" style={{ backgroundColor: '#4f46e5', padding: '0.5rem 1.25rem', borderRadius: '0.75rem', color: '#fff', fontSize: '0.875rem', fontWeight: 600, textDecoration: 'none', boxShadow: '0 10px 15px -3px rgba(79, 70, 229, 0.3)' }}>
             Login
           </Link>
-        </SignedOut>
+        </Show>
         
-        <SignedIn>
+        <Show when="signed-in">
           <UserButton />
-        </SignedIn>
+        </Show>
       </div>
     </nav>
   );
