@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { UserButton, Show } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
-    <nav className="bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-      <Link href="/" className="text-lg font-black tracking-widest text-indigo-400">
+    <nav className="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 text-white px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+      <Link href="/" className="text-xl font-black tracking-wider text-indigo-400">
         COLTURE<span className="text-white font-light">COMPS</span>
       </Link>
       
-      {/* Clean spaced navigation items */}
       <div className="hidden md:flex gap-8 items-center text-sm font-medium text-slate-300">
         <Link href="/shop" className="hover:text-indigo-400 transition">Shop</Link>
         <Link href="/consignments" className="hover:text-indigo-400 transition">Consignments</Link>
@@ -21,15 +20,17 @@ export default function Navbar() {
           Admin
         </Link>
         
-        <Show when="signed-out">
-          <Link href="/sign-in" className="bg-indigo-600 px-5 py-2 rounded-xl text-white text-sm font-semibold hover:bg-indigo-500 transition shadow-md shadow-indigo-600/20">
-            Login
-          </Link>
-        </Show>
+        <SignedOut>
+          <SignInButton mode="modal">
+            <button className="bg-indigo-600 px-5 py-2 rounded-xl text-white text-sm font-semibold hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 cursor-pointer">
+              Login
+            </button>
+          </SignInButton>
+        </SignedOut>
         
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
+        <SignedIn>
+          <UserButton afterSignOutUrl="/" />
+        </SignedIn>
       </div>
     </nav>
   );
