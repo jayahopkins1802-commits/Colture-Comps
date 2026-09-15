@@ -1,31 +1,29 @@
 import Link from "next/link";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
-    <nav className="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 text-white px-8 py-4 flex justify-between items-center sticky top-0 z-50">
-      <Link href="/" className="text-xl font-black tracking-wider text-indigo-400">
-        COLTURE<span className="text-white font-light">COMPS</span>
+    <nav style={{ backgroundColor: '#020617', borderBottom: '1px solid #1e293b', color: '#fff', padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, zIndex: 50 }}>
+      <Link href="/" style={{ fontSize: '1.25rem', fontWeight: 900, letterSpacing: '0.05em', color: '#818cf8', textDecoration: 'none' }}>
+        COLTURE<span style={{ color: '#fff', fontWeight: 300 }}>COMPS</span>
       </Link>
       
-      <div className="hidden md:flex gap-8 items-center text-sm font-medium text-slate-300">
-        <Link href="/shop" className="hover:text-indigo-400 transition">Shop</Link>
-        <Link href="/consignments" className="hover:text-indigo-400 transition">Consignments</Link>
-        <Link href="/cart" className="hover:text-indigo-400 transition">Cart</Link>
-        <Link href="/dashboard" className="hover:text-indigo-400 transition">Dashboard</Link>
+      <div style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem', fontWeight: 500 }}>
+        <Link href="/shop" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Shop</Link>
+        <Link href="/consignments" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Consignments</Link>
+        <Link href="/cart" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Cart</Link>
+        <Link href="/dashboard" style={{ color: '#cbd5e1', textDecoration: 'none' }}>Dashboard</Link>
       </div>
 
-      <div className="flex gap-4 items-center">
-        <Link href="/admin" className="text-xs text-slate-400 hover:text-white px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hidden sm:block">
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <Link href="/admin" style={{ fontSize: '0.75rem', color: '#94a3b8', padding: '0.375rem 0.75rem', borderRadius: '0.5rem', backgroundColor: '#0f172a', border: '1px solid #1e293b', textDecoration: 'none' }}>
           Admin
         </Link>
         
         <SignedOut>
-          <SignInButton mode="modal">
-            <button className="bg-indigo-600 px-5 py-2 rounded-xl text-white text-sm font-semibold hover:bg-indigo-500 transition shadow-lg shadow-indigo-600/20 cursor-pointer">
-              Login
-            </button>
-          </SignInButton>
+          <Link href="/sign-in" style={{ backgroundColor: '#4f46e5', padding: '0.5rem 1.25rem', borderRadius: '0.75rem', color: '#fff', fontSize: '0.875rem', fontWeight: 600, textDecoration: 'none', boxShadow: '0 10px 15px -3px rgba(79, 70, 229, 0.3)' }}>
+            Login
+          </Link>
         </SignedOut>
         
         <SignedIn>
