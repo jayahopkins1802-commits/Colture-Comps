@@ -1,0 +1,48 @@
+{
+  "node": {
+    "00d2075782837d1c426ef4a013c31a1bbdeea9bcc0": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": 9101,
+          "async": false,
+          "codeHash": null
+        },
+        "app/admin/page": {
+          "moduleId": 59218,
+          "async": false,
+          "codeHash": null
+        },
+        "app/shop/page": {
+          "moduleId": 3448,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js",
+      "exportedName": "invalidateCacheAction"
+    },
+    "001f964fd814e429fc41c97859c9c860eb813c3f35": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": 9101,
+          "async": false,
+          "codeHash": null
+        },
+        "app/admin/page": {
+          "moduleId": 59218,
+          "async": false,
+          "codeHash": null
+        },
+        "app/shop/page": {
+          "moduleId": 3448,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "filename": "node_modules/@clerk/nextjs/dist/esm/app-router/keyless-actions.js",
+      "exportedName": "deleteKeylessAction"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "NUyrGaa0vBdcW4PfZnlxrSd2VN8qi6m6O6FWK8FtpbM="
+}

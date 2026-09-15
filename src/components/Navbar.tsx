@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { UserButton, Show } from "@clerk/nextjs";
 
 export default function Navbar() {
   return (
@@ -11,12 +11,14 @@ export default function Navbar() {
         <Link href="/cart" className="hover:text-amber-400 transition">Cart</Link>
         <Link href="/dashboard" className="hover:text-amber-400 transition">Dashboard</Link>
         <Link href="/admin" className="text-xs text-slate-400 hover:text-white">Admin</Link>
-        <SignedOut>
+        
+        <Show when="signed-out">
           <Link href="/sign-in" className="bg-amber-500 px-4 py-1.5 rounded text-black font-semibold hover:bg-amber-400">Login</Link>
-        </SignedOut>
-        <SignedIn>
-          <UserButton afterSignOutUrl="/" />
-        </SignedIn>
+        </Show>
+        
+        <Show when="signed-in">
+          <UserButton />
+        </Show>
       </div>
     </nav>
   );

@@ -28,9 +28,11 @@
     "resend": "^6.28.0",
     "stripe": "^22.6.2",
     "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
+    "@types/react": "19.3.0",
     "prisma": "^5.22.0"
   }
 }
